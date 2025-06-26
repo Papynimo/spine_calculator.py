@@ -7,7 +7,8 @@ st.title("🏹 Évaluation du spine dynamique d'une flèche bois")
 st.markdown("Entrez les caractéristiques du fût de flèche :")
 
 spine_statique = st.number_input("Spine statique (en livres)", min_value=20, max_value=80, value=40, step=1)
-poids_fut = st.number_input("Poids du fût (en grains)", min_value=200, max_value=600, value=350, step=5)
+poids_fut_grammes = st.number_input("Poids du fût (en grammes)", min_value=10.0, max_value=40.0, value=22.7, step=0.5)
+poids_fut = poids_fut_grammes * 15.4324  # conversion en grains
 diametre = st.selectbox("Diamètre du fût", ["5/16", "11/32"], index=0)
 materiau = st.selectbox("Matériau", ["pin", "cedre"], index=0)
 
@@ -43,4 +44,5 @@ if st.button("📊 Calculer le spine dynamique"):
         st.warning("⚠️ Flèche trop rigide. Risque de mauvais comportement.")
     else:
         st.error("❌ Flèche trop souple. Risque de surcharge ou imprécision.")
+
 
